@@ -36,19 +36,19 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="user" tableName="blog_user" domainObjectName="User" >
+        <table schema="user" tableName="blog_user" domainObjectName="UserDO" >
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table schema="tag" tableName="blog_tag" domainObjectName="Tag" >
+        <table schema="tag" tableName="blog_tag" domainObjectName="TagDO" >
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table schema="post" tableName="blog_post" domainObjectName="Post" >
+        <table schema="post" tableName="blog_post" domainObjectName="PostDO" >
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table schema="category" tableName="blog_category" domainObjectName="Category" >
+        <table schema="category" tableName="blog_category" domainObjectName="CategoryDO" >
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <table schema="comment" tableName="blog_comment" domainObjectName="Comment" >
+        <table schema="comment" tableName="blog_comment" domainObjectName="CommentDO" >
             <property name="useActualColumnNames" value="false"/>
         </table>
     </context>

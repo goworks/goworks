@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import java.util.List;
-import kim.xiaom.blog.entity.dataObjects.Post;
+import kim.xiaom.blog.entity.dataObjects.PostDO;
 import kim.xiaom.blog.entity.queryObjects.PostExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,19 +14,19 @@ public interface PostMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Post record);
+    int insert(PostDO record);
 
-    int insertSelective(Post record);
+    int insertSelective(PostDO record);
 
-    List<Post> selectByExample(PostExample example);
+    List<PostDO> selectByExample(PostExample example);
 
-    Post selectByPrimaryKey(Integer id);
+    PostDO selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Post record, @Param("example") PostExample example);
+    int updateByExampleSelective(@Param("record") PostDO record, @Param("example") PostExample example);
 
-    int updateByExample(@Param("record") Post record, @Param("example") PostExample example);
+    int updateByExample(@Param("record") PostDO record, @Param("example") PostExample example);
 
-    int updateByPrimaryKeySelective(Post record);
+    int updateByPrimaryKeySelective(PostDO record);
 
-    int updateByPrimaryKey(Post record);
+    int updateByPrimaryKey(PostDO record);
 }

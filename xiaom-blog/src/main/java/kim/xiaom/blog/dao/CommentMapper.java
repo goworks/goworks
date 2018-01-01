@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import java.util.List;
-import kim.xiaom.blog.entity.dataObjects.Comment;
+import kim.xiaom.blog.entity.dataObjects.CommentDO;
 import kim.xiaom.blog.entity.queryObjects.CommentExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,19 +14,19 @@ public interface CommentMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Comment record);
+    int insert(CommentDO record);
 
-    int insertSelective(Comment record);
+    int insertSelective(CommentDO record);
 
-    List<Comment> selectByExample(CommentExample example);
+    List<CommentDO> selectByExample(CommentExample example);
 
-    Comment selectByPrimaryKey(Integer id);
+    CommentDO selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Comment record, @Param("example") CommentExample example);
+    int updateByExampleSelective(@Param("record") CommentDO record, @Param("example") CommentExample example);
 
-    int updateByExample(@Param("record") Comment record, @Param("example") CommentExample example);
+    int updateByExample(@Param("record") CommentDO record, @Param("example") CommentExample example);
 
-    int updateByPrimaryKeySelective(Comment record);
+    int updateByPrimaryKeySelective(CommentDO record);
 
-    int updateByPrimaryKey(Comment record);
+    int updateByPrimaryKey(CommentDO record);
 }

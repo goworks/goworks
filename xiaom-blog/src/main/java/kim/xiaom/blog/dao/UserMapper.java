@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import java.util.List;
-import kim.xiaom.blog.entity.dataObjects.User;
+import kim.xiaom.blog.entity.dataObjects.UserDO;
 import kim.xiaom.blog.entity.queryObjects.UserExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,19 +14,19 @@ public interface UserMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    int insert(UserDO record);
 
-    int insertSelective(User record);
+    int insertSelective(UserDO record);
 
-    List<User> selectByExample(UserExample example);
+    List<UserDO> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer id);
+    UserDO selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("record") UserDO record, @Param("example") UserExample example);
 
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExample(@Param("record") UserDO record, @Param("example") UserExample example);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(UserDO record);
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserDO record);
 }

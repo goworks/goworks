@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import kim.xiaom.blog.XiaomBlogApplicationTests;
-import kim.xiaom.blog.entity.dataObjects.Post;
+import kim.xiaom.blog.entity.dataObjects.PostDO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +20,16 @@ public class BlogIntegrationTest {
     private PostMapper postMapper;
     @Test
     public void should_insert_post_successfully() {
-        Post post = new Post();
+        PostDO post = new PostDO();
         post.setId(1);
         post.setActive(1);
-        post.setText(1);
+        post.setText("1");
 
         postMapper.insert(post);
 
-        Post fetchPost = postMapper.selectByPrimaryKey(1);
+        PostDO fetchPost = postMapper.selectByPrimaryKey(1);
 
         assertThat(fetchPost).isNotNull();
-        assertThat(fetchPost.getText()).isEqualTo(1);
+        assertThat(fetchPost.getText()).isEqualTo("1");
     }
 }

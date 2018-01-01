@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kim.xiaom.blog.dao.TagMapper">
-  <resultMap id="BaseResultMap" type="kim.xiaom.blog.entity.dataObjects.Tag">
+  <resultMap id="BaseResultMap" type="kim.xiaom.blog.entity.dataObjects.TagDO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="tag_id" jdbcType="VARCHAR" property="tagId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -107,7 +107,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="kim.xiaom.blog.entity.dataObjects.Tag">
+  <insert id="insert" parameterType="kim.xiaom.blog.entity.dataObjects.TagDO">
     insert into blog_tag (id, tag_id, name, 
       desc, status, remark, 
       active, version, gmt_create, 
@@ -119,7 +119,7 @@
       #{gmtModify,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="kim.xiaom.blog.entity.dataObjects.Tag">
+  <insert id="insertSelective" parameterType="kim.xiaom.blog.entity.dataObjects.TagDO">
     insert into blog_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -266,7 +266,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="kim.xiaom.blog.entity.dataObjects.Tag">
+  <update id="updateByPrimaryKeySelective" parameterType="kim.xiaom.blog.entity.dataObjects.TagDO">
     update blog_tag
     <set>
       <if test="tagId != null">
@@ -305,7 +305,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="kim.xiaom.blog.entity.dataObjects.Tag">
+  <update id="updateByPrimaryKey" parameterType="kim.xiaom.blog.entity.dataObjects.TagDO">
     update blog_tag
     set tag_id = #{tagId,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

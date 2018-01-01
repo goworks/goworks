@@ -2,20 +2,20 @@ package kim.xiaom.blog.entity.dataObjects;
 
 import java.util.Date;
 
-public class Comment {
+public class PostDO {
     private Integer id;
 
-    private String commentId;
+    private String postId;
 
     private String text;
+
+    private String title;
 
     private Integer status;
 
     private String remark;
 
     private Integer active;
-
-    private Integer version;
 
     private Date gmtCreate;
 
@@ -33,12 +33,12 @@ public class Comment {
         this.id = id;
     }
 
-    public String getCommentId() {
-        return commentId;
+    public String getPostId() {
+        return postId;
     }
 
-    public void setCommentId(String commentId) {
-        this.commentId = commentId == null ? null : commentId.trim();
+    public void setPostId(String postId) {
+        this.postId = postId == null ? null : postId.trim();
     }
 
     public String getText() {
@@ -46,7 +46,15 @@ public class Comment {
     }
 
     public void setText(String text) {
-        this.text = text == null ? null : text.trim();
+        this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
     public Integer getStatus() {
@@ -71,14 +79,6 @@ public class Comment {
 
     public void setActive(Integer active) {
         this.active = active;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 
     public Date getGmtCreate() {

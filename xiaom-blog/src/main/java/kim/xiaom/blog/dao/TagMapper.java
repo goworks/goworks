@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import java.util.List;
-import kim.xiaom.blog.entity.dataObjects.Tag;
+import kim.xiaom.blog.entity.dataObjects.TagDO;
 import kim.xiaom.blog.entity.queryObjects.TagExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,19 +14,19 @@ public interface TagMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Tag record);
+    int insert(TagDO record);
 
-    int insertSelective(Tag record);
+    int insertSelective(TagDO record);
 
-    List<Tag> selectByExample(TagExample example);
+    List<TagDO> selectByExample(TagExample example);
 
-    Tag selectByPrimaryKey(Integer id);
+    TagDO selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Tag record, @Param("example") TagExample example);
+    int updateByExampleSelective(@Param("record") TagDO record, @Param("example") TagExample example);
 
-    int updateByExample(@Param("record") Tag record, @Param("example") TagExample example);
+    int updateByExample(@Param("record") TagDO record, @Param("example") TagExample example);
 
-    int updateByPrimaryKeySelective(Tag record);
+    int updateByPrimaryKeySelective(TagDO record);
 
-    int updateByPrimaryKey(Tag record);
+    int updateByPrimaryKey(TagDO record);
 }

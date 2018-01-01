@@ -2,14 +2,12 @@ package kim.xiaom.blog.entity.dataObjects;
 
 import java.util.Date;
 
-public class Category {
+public class CommentDO {
     private Integer id;
 
-    private String categoryId;
+    private String commentId;
 
-    private Integer name;
-
-    private Integer sequence;
+    private String text;
 
     private Integer status;
 
@@ -35,28 +33,20 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    public String getCommentId() {
+        return commentId;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId == null ? null : categoryId.trim();
+    public void setCommentId(String commentId) {
+        this.commentId = commentId == null ? null : commentId.trim();
     }
 
-    public Integer getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(Integer name) {
-        this.name = name;
-    }
-
-    public Integer getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(Integer sequence) {
-        this.sequence = sequence;
+    public void setText(String text) {
+        this.text = text == null ? null : text.trim();
     }
 
     public Integer getStatus() {

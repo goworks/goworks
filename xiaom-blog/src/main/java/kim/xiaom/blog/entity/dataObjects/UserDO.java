@@ -2,18 +2,22 @@ package kim.xiaom.blog.entity.dataObjects;
 
 import java.util.Date;
 
-public class Tag {
+public class UserDO {
     private Integer id;
 
-    private String tagId;
+    private String userId;
 
-    private String name;
+    private String username;
 
-    private String desc;
+    private String password;
+
+    private String email;
+
+    private String phone;
 
     private Integer status;
 
-    private Integer remark;
+    private String remark;
 
     private Integer active;
 
@@ -35,28 +39,44 @@ public class Tag {
         this.id = id;
     }
 
-    public String getTagId() {
-        return tagId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTagId(String tagId) {
-        this.tagId = tagId == null ? null : tagId.trim();
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getStatus() {
@@ -67,12 +87,12 @@ public class Tag {
         this.status = status;
     }
 
-    public Integer getRemark() {
+    public String getRemark() {
         return remark;
     }
 
-    public void setRemark(Integer remark) {
-        this.remark = remark;
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public Integer getActive() {

@@ -2,20 +2,22 @@ package kim.xiaom.blog.entity.dataObjects;
 
 import java.util.Date;
 
-public class Post {
+public class TagDO {
     private Integer id;
 
-    private String postId;
+    private String tagId;
 
-    private Integer text;
+    private String name;
 
-    private String title;
+    private String desc;
 
     private Integer status;
 
-    private String remark;
+    private Integer remark;
 
     private Integer active;
+
+    private Integer version;
 
     private Date gmtCreate;
 
@@ -33,28 +35,28 @@ public class Post {
         this.id = id;
     }
 
-    public String getPostId() {
-        return postId;
+    public String getTagId() {
+        return tagId;
     }
 
-    public void setPostId(String postId) {
-        this.postId = postId == null ? null : postId.trim();
+    public void setTagId(String tagId) {
+        this.tagId = tagId == null ? null : tagId.trim();
     }
 
-    public Integer getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(Integer text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getTitle() {
-        return title;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+    public void setDesc(String desc) {
+        this.desc = desc == null ? null : desc.trim();
     }
 
     public Integer getStatus() {
@@ -65,12 +67,12 @@ public class Post {
         this.status = status;
     }
 
-    public String getRemark() {
+    public Integer getRemark() {
         return remark;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+    public void setRemark(Integer remark) {
+        this.remark = remark;
     }
 
     public Integer getActive() {
@@ -79,6 +81,14 @@ public class Post {
 
     public void setActive(Integer active) {
         this.active = active;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Date getGmtCreate() {

@@ -1,7 +1,7 @@
 package kim.xiaom.blog.dao;
 
 import java.util.List;
-import kim.xiaom.blog.entity.dataObjects.Category;
+import kim.xiaom.blog.entity.dataObjects.CategoryDO;
 import kim.xiaom.blog.entity.queryObjects.CategoryExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,19 +14,19 @@ public interface CategoryMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Category record);
+    int insert(CategoryDO record);
 
-    int insertSelective(Category record);
+    int insertSelective(CategoryDO record);
 
-    List<Category> selectByExample(CategoryExample example);
+    List<CategoryDO> selectByExample(CategoryExample example);
 
-    Category selectByPrimaryKey(Integer id);
+    CategoryDO selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Category record, @Param("example") CategoryExample example);
+    int updateByExampleSelective(@Param("record") CategoryDO record, @Param("example") CategoryExample example);
 
-    int updateByExample(@Param("record") Category record, @Param("example") CategoryExample example);
+    int updateByExample(@Param("record") CategoryDO record, @Param("example") CategoryExample example);
 
-    int updateByPrimaryKeySelective(Category record);
+    int updateByPrimaryKeySelective(CategoryDO record);
 
-    int updateByPrimaryKey(Category record);
+    int updateByPrimaryKey(CategoryDO record);
 }

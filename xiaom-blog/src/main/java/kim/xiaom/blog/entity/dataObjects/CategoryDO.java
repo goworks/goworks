@@ -2,18 +2,14 @@ package kim.xiaom.blog.entity.dataObjects;
 
 import java.util.Date;
 
-public class User {
+public class CategoryDO {
     private Integer id;
 
-    private String userId;
+    private String categoryId;
 
-    private String username;
+    private Integer name;
 
-    private String password;
-
-    private String email;
-
-    private String phone;
+    private Integer sequence;
 
     private Integer status;
 
@@ -39,44 +35,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId == null ? null : categoryId.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setName(Integer name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getSequence() {
+        return sequence;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
     }
 
     public Integer getStatus() {
