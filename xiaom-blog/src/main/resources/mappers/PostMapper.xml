@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="kim.xiaom.blog.entity.dataObjects.PostDO">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="post_id" jdbcType="VARCHAR" property="postId" />
-    <result column="text" jdbcType="INTEGER" property="text" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -111,7 +111,7 @@
       title, status, remark, 
       active, gmt_create, gmt_modify, 
       creator, modifier)
-    values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=VARCHAR}, #{text,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR},
       #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
       #{active,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
       #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR})
@@ -161,7 +161,7 @@
         #{postId,jdbcType=VARCHAR},
       </if>
       <if test="text != null">
-        #{text,jdbcType=INTEGER},
+        #{text,jdbcType=VARCHAR},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -205,7 +205,7 @@
         post_id = #{record.postId,jdbcType=VARCHAR},
       </if>
       <if test="record.text != null">
-        text = #{record.text,jdbcType=INTEGER},
+        text = #{record.text,jdbcType=VARCHAR},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -240,7 +240,7 @@
     update blog_post
     set id = #{record.id,jdbcType=INTEGER},
       post_id = #{record.postId,jdbcType=VARCHAR},
-      text = #{record.text,jdbcType=INTEGER},
+      text = #{record.text,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR},
@@ -260,7 +260,7 @@
         post_id = #{postId,jdbcType=VARCHAR},
       </if>
       <if test="text != null">
-        text = #{text,jdbcType=INTEGER},
+        text = #{text,jdbcType=VARCHAR},
       </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
@@ -292,7 +292,7 @@
   <update id="updateByPrimaryKey" parameterType="kim.xiaom.blog.entity.dataObjects.PostDO">
     update blog_post
     set post_id = #{postId,jdbcType=VARCHAR},
-      text = #{text,jdbcType=INTEGER},
+      text = #{text,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
