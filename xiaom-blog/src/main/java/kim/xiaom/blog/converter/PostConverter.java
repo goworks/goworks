@@ -1,8 +1,12 @@
 package kim.xiaom.blog.converter;
 
+import com.github.pagehelper.PageInfo;
 import kim.xiaom.blog.domain.Post;
 import kim.xiaom.blog.entity.dataObjects.PostDO;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by ge on 31/12/2017.
@@ -37,5 +41,18 @@ public class PostConverter {
         postDO.setGmtModify(post.getGmtModify());
 
         return postDO;
+    }
+
+    public PageInfo<Post> convert(PageInfo<PostDO> doPageInfo) {
+        List<PostDO> postDOs = doPageInfo.getList();
+        List<Post> posts = postDOs.stream().map(this::convert).collect(Collectors.toList());
+
+        PageInfo<Post> postPageInfo = new PageInfo<>();
+        postPageInfo.setList(posts);
+        postPageInfo.setPageNum(doPageInfo.getPageNum());
+        postPageInfo.setPageSize(doPageInfo.getPageSize());
+        postPageInfo.setTotal(doPageInfo.getTotal());
+
+        return postPageInfo;
     }
 }

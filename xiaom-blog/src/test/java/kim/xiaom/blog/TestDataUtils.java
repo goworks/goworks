@@ -26,4 +26,19 @@ public class TestDataUtils {
 
         return postDO;
     }
+
+    public static Post generatePost(String postId, String title, String text) {
+        Post post = new Post();
+        post.setId(postId);
+        post.setTitle(title);
+        post.setText(text);
+        post.setStatus(1);
+
+        post.setCreator("wnow20");
+        post.setModifier("wnow20");
+        post.setGmtCreate(new Date());
+        post.setGmtModify(new Date());
+
+        return post;
+    }
 }

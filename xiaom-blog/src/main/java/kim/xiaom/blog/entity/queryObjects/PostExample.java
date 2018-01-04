@@ -336,12 +336,12 @@ public class PostExample {
         }
 
         public Criteria andTitleLike(String value) {
-            addCriterion("title like", value, "title");
+            addCriterion("title like", "%" + value + "%", "title");
             return (Criteria) this;
         }
 
         public Criteria andTitleNotLike(String value) {
-            addCriterion("title not like", value, "title");
+            addCriterion("title not like", "%" + value + "%", "title");
             return (Criteria) this;
         }
 

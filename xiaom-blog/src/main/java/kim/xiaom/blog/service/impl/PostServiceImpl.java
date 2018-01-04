@@ -1,6 +1,8 @@
 package kim.xiaom.blog.service.impl;
 
-import kim.xiaom.blog.common.Page;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import kim.xiaom.blog.converter.PostConverter;
 import kim.xiaom.blog.dao.PostMapper;
 import kim.xiaom.blog.domain.Post;
@@ -9,7 +11,9 @@ import kim.xiaom.blog.entity.queryObjects.PostExample;
 import kim.xiaom.blog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,6 +44,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public void insert(Post post) {
         PostDO postDO = postConverter.convert(post);
+        postDO.setGmtCreate(new Date());
+        postDO.setGmtModify(new Date());
         postMapper.insert(postDO);
     }
 
@@ -57,7 +63,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findPage(Post post, Page page) {
-        return null;
+    public PageInfo<Post> findPage(Post post, int current, int pageSize) {
+        PageHelper.startPage(current, pageSize);
+        PostExample postExample = new PostExample();
+        PostExample.Criteria criteria = postExample.createCriteria();
+        if (!StringUtils.isEmpty(post.getTitle())) {
+            criteria.andTitleLike(post.getTitle());
+        }
+        postExample.setOrderByClause("gmt_create desc");
+
+        Page<PostDO> postDOs = (Page<PostDO>) postMapper.selectByExample(postExample);
+        PageInfo<PostDO> postDOPageInfo = postDOs.toPageInfo();
+
+        return postConverter.convert(postDOPageInfo);
     }
 }

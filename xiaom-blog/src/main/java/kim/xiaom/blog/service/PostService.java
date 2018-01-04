@@ -1,5 +1,6 @@
 package kim.xiaom.blog.service;
 
+import com.github.pagehelper.PageInfo;
 import kim.xiaom.blog.common.Page;
 import kim.xiaom.blog.domain.Post;
 import kim.xiaom.blog.entity.dataObjects.PostDO;
@@ -13,5 +14,5 @@ public interface PostService {
     Post get(String postId);
     void insert(Post post);
     void update(Post post);
-    List<Post> findPage(Post post, Page page);
+    PageInfo<Post> findPage(Post post, int current, int pageSize);
 }
