@@ -1,16 +1,17 @@
 package kim.xiaom.work;
 
+import kim.xiaom.work.config.Config;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootApplication
+@SpringBootConfiguration
+@Import({Config.class})
 public class XiaomWorkApplicationTests {
 
 	@Test
 	public void contextLoads() {
 	}
-
 }
