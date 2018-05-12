@@ -9,7 +9,6 @@ import kim.xiaom.work.enums.ActiveEnum;
 import kim.xiaom.work.enums.UserStatus;
 import kim.xiaom.work.service.SecurityService;
 import kim.xiaom.work.service.UserService;
-import kim.xiaom.work.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -86,5 +85,18 @@ public class UserServiceImpl implements UserService {
     public void register(UserDO userDO) {
         this.createUser(userDO);
         securityService.autologin(userDO.getUsername(), userDO.getPassword());
+    }
+
+    @Override
+    public UserDO getUserByUsernameAndPassword(String username, String password) {
+        UserDOExample userDOExample = new UserDOExample();
+        userDOExample.createCriteria()
+                .andUsernameEqualTo(username)
+                .andPasswordEqualTo(password);
+        List<UserDO> userDOs = userDOMapper.selectByExample(userDOExample);
+        if (CollectionUtils.isEmpty(userDOs)) {
+            return null;
+        }
+        return userDOs.get(0);
     }
 }

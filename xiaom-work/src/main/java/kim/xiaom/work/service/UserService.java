@@ -11,4 +11,5 @@ public interface UserService {
     void createUser(UserDO userDO);
     void login(UserDO userDO);
     void register(UserDO userDO);
+    UserDO getUserByUsernameAndPassword(String username, String password);
 }
