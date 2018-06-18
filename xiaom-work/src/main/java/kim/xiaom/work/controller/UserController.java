@@ -2,11 +2,15 @@ package kim.xiaom.work.controller;
 
 import kim.xiaom.work.controller.wrapper.StatusVO;
 import kim.xiaom.work.converter.UserConverter;
+import kim.xiaom.work.entity.dataObjects.UserDO;
 import kim.xiaom.work.entity.viewObjects.UserVO;
 import kim.xiaom.work.service.UserService;
 import kim.xiaom.work.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 
 /**
@@ -30,5 +34,12 @@ public class UserController {
     public StatusVO register(@RequestBody UserVO userVO) {
         userService.register(userConverter.convert(userVO));
         return ResponseUtils.ok();
+    }
+
+    @RequestMapping(value = "/user/profile", method = RequestMethod.GET)
+    public UserDO getProfile(Principal principal) {
+        UserDO userDO = userService.getUserByUsername(principal.getName());
+        userDO.setPassword(null);
+        return userDO;
     }
 }

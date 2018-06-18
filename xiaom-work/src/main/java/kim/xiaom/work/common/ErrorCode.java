@@ -5,5 +5,5 @@ package kim.xiaom.work.common;
  */
 public class ErrorCode {
     public static final String USER_NOT_EXIST = "用户名不存在";
-    public static final String USER_PASSWORD_INCORRECT = "密码不存在";
+    public static final String USER_PASSWORD_INCORRECT = "密码不匹配";
 }

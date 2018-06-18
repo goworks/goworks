@@ -74,11 +74,11 @@ public class UserServiceImpl implements UserService {
         if (Objects.isNull(fetchedUserDO)) {
             throw new RequestException(ErrorCode.USER_NOT_EXIST);
         }
-        String loginPassword = bCryptPasswordEncoder.encode(userDO.getPassword());
-        if (!loginPassword.equals(fetchedUserDO.getPassword())) {
+        boolean matched = bCryptPasswordEncoder.matches(userDO.getPassword(), fetchedUserDO.getPassword());
+        if (!matched) {
             throw new RequestException(ErrorCode.USER_PASSWORD_INCORRECT);
         }
-        securityService.autologin(userDO.getUsername(), userDO.getPassword());
+        securityService.autologin(userDO.getUsername(), fetchedUserDO.getPassword());
     }
 
     @Override

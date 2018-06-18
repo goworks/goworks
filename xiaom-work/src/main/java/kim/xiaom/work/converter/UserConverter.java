@@ -2,9 +2,11 @@ package kim.xiaom.work.converter;
 
 import kim.xiaom.work.entity.dataObjects.UserDO;
 import kim.xiaom.work.entity.viewObjects.UserVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Created by ge on 12/05/2018.
@@ -21,6 +23,10 @@ public class UserConverter {
         userDO.setEmail(userVO.getEmail());
         userDO.setPassword(userVO.getPassword());
         userDO.setPhone(userVO.getPhone());
+
+        if (StringUtils.isEmpty(userDO.getUserId())) {
+            userDO.setUserId(UUID.randomUUID().toString());
+        }
 
         return userDO;
     }
