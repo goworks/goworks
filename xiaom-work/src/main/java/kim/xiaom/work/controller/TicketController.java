@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by ge on 27/01/2018.
  */
+@CrossOrigin(origins = {"http://localhost:*", "*"})
 @RestController
 public class TicketController {
     private TicketService ticketService;
@@ -33,9 +34,9 @@ public class TicketController {
     }
 
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
-    public PageVO<TicketVO> queryTicketsPage(@RequestParam int current,
+    public PageVO<TicketVO> queryTicketsPage(@RequestParam(defaultValue = "0") int current,
                                              @RequestParam(defaultValue = Constants.PAGE_SIZE_STRING) int pageSize,
-                                             @RequestParam String title) {
+                                             @RequestParam(required = false) String title) {
         PageInfo<kim.xiaom.work.entity.dataObjects.TicketDO> pageInfo = ticketService.findPage(title, current, pageSize);
         return (PageVO<TicketVO>) ResponseUtils.create(pageInfo);
     }

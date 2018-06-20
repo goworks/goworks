@@ -8,6 +8,7 @@ import kim.xiaom.work.dao.TicketDOMapper;
 import kim.xiaom.work.entity.dataObjects.TicketDO;
 import kim.xiaom.work.entity.queryObjects.TicketDOExample;
 import kim.xiaom.work.service.TicketService;
+import kim.xiaom.work.utils.XiaomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,9 @@ import java.util.List;
  */
 @Service
 public class TicketServiceImpl implements TicketService {
+    @Autowired
     private TicketDOMapper ticketDOMapper;
+    @Autowired
     private TicketConverter ticketConverter;
 
     @Override
@@ -55,7 +58,6 @@ public class TicketServiceImpl implements TicketService {
         ticketDOExample.createCriteria()
                 .andTicketIdEqualTo(ticketDO.getTicketId());
 
-
         // TODO set modifier
         // TODO set gmtModify
         ticketDOMapper.updateByExampleSelective(ticketDO, ticketDOExample);
@@ -65,24 +67,7 @@ public class TicketServiceImpl implements TicketService {
     public void createTicket(TicketDO ticketDO) {
         ticketDO.setGmtCreate(new Date());
         ticketDO.setGmtModify(new Date());
+        ticketDO.setTicketId(XiaomUtils.uuid());
         ticketDOMapper.insert(ticketDO);
-    }
-
-    public TicketDOMapper getTicketDOMapper() {
-        return ticketDOMapper;
-    }
-
-    @Autowired
-    public void setTicketDOMapper(TicketDOMapper ticketDOMapper) {
-        this.ticketDOMapper = ticketDOMapper;
-    }
-
-    public TicketConverter getTicketConverter() {
-        return ticketConverter;
-    }
-
-    @Autowired
-    public void setTicketConverter(TicketConverter ticketConverter) {
-        this.ticketConverter = ticketConverter;
     }
 }
