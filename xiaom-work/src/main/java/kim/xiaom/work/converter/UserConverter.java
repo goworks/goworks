@@ -2,6 +2,7 @@ package kim.xiaom.work.converter;
 
 import kim.xiaom.work.entity.dataObjects.UserDO;
 import kim.xiaom.work.entity.viewObjects.UserVO;
+import kim.xiaom.work.utils.XiaomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,7 @@ public class UserConverter {
         userDO.setPhone(userVO.getPhone());
 
         if (StringUtils.isEmpty(userDO.getUserId())) {
-            userDO.setUserId(UUID.randomUUID().toString());
+            userDO.setUserId(XiaomUtils.uuid());
         }
 
         return userDO;

@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationProvider {
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE"));
-        Authentication auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuthorities);
+        Authentication auth = new UsernamePasswordAuthenticationToken(userDO, password, grantedAuthorities);
         return auth;
     }
 

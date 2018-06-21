@@ -7,11 +7,8 @@ import kim.xiaom.work.entity.viewObjects.UserVO;
 import kim.xiaom.work.service.UserService;
 import kim.xiaom.work.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
-
 
 /**
  * Created by ge on 12/05/2018.
@@ -37,8 +34,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/profile", method = RequestMethod.GET)
-    public UserDO getProfile(Principal principal) {
-        UserDO userDO = userService.getUserByUsername(principal.getName());
+    public UserDO getProfile(Authentication authentication) {
+        UserDO principal = (UserDO) authentication.getPrincipal();
+        UserDO userDO = userService.getUserByUsername(principal.getUsername());
         userDO.setPassword(null);
         return userDO;
     }

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"http://localhost:*", "*"})
 @RestController
 public class TicketController {
+    @Autowired
     private TicketService ticketService;
+    @Autowired
     private TicketConverter ticketConverter;
 
     @RequestMapping("/ticket/:id")
@@ -45,23 +47,5 @@ public class TicketController {
     public StatusVO createTicket(@RequestBody TicketVO ticketVO) {
         ticketService.createTicket(ticketConverter.convert(ticketVO));
         return ResponseUtils.ok();
-    }
-
-    public TicketService getTicketService() {
-        return ticketService;
-    }
-
-    @Autowired
-    public void setTicketService(TicketService ticketService) {
-        this.ticketService = ticketService;
-    }
-
-    public TicketConverter getTicketConverter() {
-        return ticketConverter;
-    }
-
-    @Autowired
-    public void setTicketConverter(TicketConverter ticketConverter) {
-        this.ticketConverter = ticketConverter;
     }
 }
