@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
     <properties resource="application.properties"/>
-    <context id="DB2Tables" targetRuntime="MyBatis3">
-
+    <context id="MySQL2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false" />
-            <property name="addRemarkComments" value="false" />
+            <property name="addRemarkComments" value="true" />
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/sampledb?useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/work?useSSL=false"
                         userId="${spring.datasource.username}"
                         password="${spring.datasource.password}">
         </jdbcConnection>
@@ -23,7 +22,7 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="kim.xiaom.work.entity.dataObjects" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cc.goworks.work.tunnel.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -32,27 +31,15 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="kim.xiaom.work.dao"  targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cc.goworks.work.tunnel.dao"  targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="user" tableName="work_user" domainObjectName="UserDO" >
-            <property name="useActualColumnNames" value="false"/>
+        <!--mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate-->
+
+        <table tableName="staff" domainObjectName="StaffDO" >
+            <generatedKey column="ID" sqlStatement="MySql" identity="true" />
         </table>
-        <table schema="guest" tableName="work_guest" domainObjectName="GuestDO" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-        <table schema="tag" tableName="work_tag" domainObjectName="TagDO" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-        <table schema="ticket" tableName="work_ticket" domainObjectName="TicketDO" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-        <table schema="comment" tableName="work_comment" domainObjectName="CommentDO" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-        <table schema="ticket_tag" tableName="work_ticket_tags" domainObjectName="TicketTagDO" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+
     </context>
 </generatorConfiguration>
