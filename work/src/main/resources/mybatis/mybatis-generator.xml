@@ -14,8 +14,8 @@
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/work?useSSL=false"
-                        userId="${spring.datasource.username}"
-                        password="${spring.datasource.password}">
+                        userId="root"
+                        password="opslter-1">
         </jdbcConnection>
 
         <javaTypeResolver >

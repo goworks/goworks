@@ -3,7 +3,7 @@ package cc.goworks.work.entity.viewObjects;
 /**
  * Created by ge on 12/05/2018.
  */
-public class UserVO {
+public class StaffVO {
     private String id;
 
     private String personId;

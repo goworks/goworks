@@ -1,7 +1,7 @@
 package cc.goworks.work.service.impl;
 
-import cc.goworks.work.entity.dataObjects.UserDO;
-import cc.goworks.work.service.UserService;
+import cc.goworks.work.service.StaffService;
+import cc.goworks.work.tunnel.model.StaffDO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,8 +20,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AuthenticationServiceImpl implements AuthenticationProvider {
+    private StaffService staffService;
+
     @Autowired
-    private UserService userService;
+    public AuthenticationServiceImpl(StaffService staffService) {
+        this.staffService = staffService;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -32,15 +36,15 @@ public class AuthenticationServiceImpl implements AuthenticationProvider {
         }
         String password = credentials.toString();
 
-        UserDO userDO = userService.getUserByUsernameAndPassword(username, password);
+        StaffDO staffDO = staffService.getUserByUsernameAndPassword(username, password);
 
-        if (Objects.isNull(userDO)) {
+        if (Objects.isNull(staffDO)) {
             throw new BadCredentialsException("Authentication failed for " + username);
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE"));
-        Authentication auth = new UsernamePasswordAuthenticationToken(userDO, password, grantedAuthorities);
+        Authentication auth = new UsernamePasswordAuthenticationToken(staffDO, password, grantedAuthorities);
         return auth;
     }
 

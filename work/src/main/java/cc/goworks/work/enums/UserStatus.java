@@ -7,14 +7,14 @@ import java.util.Optional;
  * Created by ge on 13/05/2018.
  */
 public enum UserStatus {
-    AVAILABLE("可用", 1),
-    DISABLE("不可用", 0),
+    AVAILABLE("可用", (byte)1),
+    DISABLE("不可用", (byte)0),
     ;
 
-    private String name;
-    private Integer value;
+    private final String name;
+    private final byte value;
 
-    UserStatus(String name, Integer value) {
+    UserStatus(String name, byte value) {
         this.name = name;
         this.value = value;
     }
@@ -23,17 +23,15 @@ public enum UserStatus {
         return name;
     }
 
-    public Integer getValue() {
+    public byte getValue() {
         return value;
     }
 
     public UserStatus getByValue(Integer value) {
-        Optional<UserStatus> activeEnum = Arrays.asList(UserStatus.values()).stream().filter(x -> x.getValue().equals(value)).findFirst();
+        Optional<UserStatus> activeEnum = Arrays.stream(UserStatus.values())
+            .filter(x -> x.getValue() == value)
+            .findFirst();
 
-        if (activeEnum.isPresent()) {
-            return activeEnum.get();
-        }
-
-        return null;
+        return activeEnum.orElse(null);
     }
 }
