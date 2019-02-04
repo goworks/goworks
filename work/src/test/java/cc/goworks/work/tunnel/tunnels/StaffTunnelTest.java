@@ -3,7 +3,6 @@ package cc.goworks.work.tunnel.tunnels;
 import cc.goworks.work.WorkApplicationTests;
 import cc.goworks.work.tunnel.model.StaffDO;
 import cc.goworks.work.utils.TestDataUtils;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +20,11 @@ public class StaffTunnelTest {
     @Autowired
     private StaffTunnel staffTunnel;
 
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
     @Test
     public void should_create_staff_successfully() {
         StaffDO staffDO = TestDataUtils.generateStaffDO();
 
-        int id = staffTunnel.save(staffDO);
+        staffTunnel.save(staffDO);
 
         StaffDO fetched = staffTunnel.get(staffDO.getStaffId());
 
@@ -58,7 +52,9 @@ public class StaffTunnelTest {
         assertThat(fetched.getPostId()).isEqualTo(staffDO.getPostId());
 
         // system
-        assertThat(fetched.getId()).isEqualTo(id);
+        assertThat(fetched.getId()).isNotNull();
+        assertThat(fetched.getStaffId()).isNotNull();
+        assertThat(fetched.getId()).isEqualTo(staffDO.getId());
         assertThat(fetched.getStaffId()).isEqualTo(staffDO.getStaffId());
         assertThat(fetched.getStatus()).isEqualTo(staffDO.getStatus());
         assertThat(fetched.getType()).isEqualTo(staffDO.getType());
@@ -68,6 +64,24 @@ public class StaffTunnelTest {
         assertThat(fetched.getModifier()).isEqualTo(staffDO.getModifier());
         assertThat(fetched.getVersion()).isEqualTo(1);
         assertThat(fetched.getActive()).isEqualTo(ACTIVE.getValue());
+    }
+
+    @Test
+    public void should_update_staff_info_successfully() {
+        StaffDO staffDO = TestDataUtils.generateStaffDO();
+        String originName = staffDO.getName();
+        String originPhone = staffDO.getPhone();
+        staffTunnel.save(staffDO);
+
+        staffDO.setName(originName + 1);
+        staffDO.setPhone(originPhone + 1);
+        staffTunnel.save(staffDO);
+
+        StaffDO fetched = staffTunnel.get(staffDO.getStaffId());
+
+        assertThat(fetched).isNotNull();
+        assertThat(fetched.getName()).isEqualTo(originName + 1);
+        assertThat(fetched.getPhone()).isEqualTo(originPhone + 1);
     }
 
 }

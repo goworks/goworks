@@ -23,6 +23,7 @@ public class StaffTunnel {
     }
 
     public StaffDO get(String id) {
+        Assert.notNull(id, "staff id cannot be null");
         StaffDOExample example = new StaffDOExample();
         example.createCriteria()
             .andStaffIdEqualTo(id)
@@ -34,7 +35,7 @@ public class StaffTunnel {
         return staffDOS.get(0);
     }
 
-    public int save(StaffDO staffDO) {
+    public void save(StaffDO staffDO) {
         Assert.notNull(staffDO, "staffDO cannot be null");
         String staffId = staffDO.getStaffId();
 
@@ -46,20 +47,22 @@ public class StaffTunnel {
             staffDO.setActive(ACTIVE.getValue());
             staffDO.setVersion(1);
 
-            return staffDOMapper.insert(staffDO);
+            staffDOMapper.insert(staffDO);
+            return;
         }
         Integer originVersion = fetched.getVersion();
+        Assert.isTrue(staffDO.getId().equals(fetched.getId()), "id should be equal");
+        Assert.isTrue(staffDO.getStaffId().equals(fetched.getStaffId()), "staffId should be equal");
 
         staffDO.setGmtModify(new Date());
         staffDO.setVersion(originVersion + 1);
-        staffDO.setId(null);
-        staffDO.setStaffId(null);
 
         StaffDOExample example = new StaffDOExample();
         example.createCriteria()
             .andStaffIdEqualTo(staffDO.getStaffId())
+            .andIdEqualTo(staffDO.getId())
             .andActiveEqualTo(ACTIVE.getValue());
-        return staffDOMapper.updateByExampleSelective(staffDO, example);
+        staffDOMapper.updateByExampleSelective(staffDO, example);
     }
 
     public StaffDO getByUsername(String username) {
