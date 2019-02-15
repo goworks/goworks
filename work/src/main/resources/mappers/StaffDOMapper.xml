@@ -22,6 +22,7 @@
     <result column="probation_salary" jdbcType="VARCHAR" property="probationSalary" />
     <result column="salary" jdbcType="VARCHAR" property="salary" />
     <result column="salary_card" jdbcType="VARCHAR" property="salaryCard" />
+    <result column="salary_card_bank" jdbcType="VARCHAR" property="salaryCardBank" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
@@ -91,8 +92,8 @@
   <sql id="Base_Column_List">
     id, staff_id, work_no, name, username, password, hr_organization_id, costing_organization_id, 
     post_id, first_employ_date, positive_date, type, identity_number, phone, birthday, 
-    gender, email, probation_salary, salary, salary_card, gmt_create, gmt_modify, creator, 
-    modifier, version, active, status
+    gender, email, probation_salary, salary, salary_card, salary_card_bank, gmt_create, 
+    gmt_modify, creator, modifier, version, active, status
   </sql>
   <select id="selectByExample" parameterType="cc.goworks.work.tunnel.model.StaffDOExample" resultMap="BaseResultMap">
     select
@@ -134,18 +135,20 @@
       positive_date, type, identity_number, 
       phone, birthday, gender, 
       email, probation_salary, salary, 
-      salary_card, gmt_create, gmt_modify, 
-      creator, modifier, version, 
-      active, status)
+      salary_card, salary_card_bank, gmt_create, 
+      gmt_modify, creator, modifier, 
+      version, active, status
+      )
     values (#{staffId,jdbcType=VARCHAR}, #{workNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{hrOrganizationId,jdbcType=VARCHAR}, 
       #{costingOrganizationId,jdbcType=VARCHAR}, #{postId,jdbcType=VARCHAR}, #{firstEmployDate,jdbcType=TIMESTAMP}, 
       #{positiveDate,jdbcType=TIMESTAMP}, #{type,jdbcType=TINYINT}, #{identityNumber,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{gender,jdbcType=TINYINT}, 
       #{email,jdbcType=VARCHAR}, #{probationSalary,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR}, 
-      #{salaryCard,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
-      #{active,jdbcType=TINYINT}, #{status,jdbcType=TINYINT})
+      #{salaryCard,jdbcType=VARCHAR}, #{salaryCardBank,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{active,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cc.goworks.work.tunnel.model.StaffDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -209,6 +212,9 @@
       </if>
       <if test="salaryCard != null">
         salary_card,
+      </if>
+      <if test="salaryCardBank != null">
+        salary_card_bank,
       </if>
       <if test="gmtCreate != null">
         gmt_create,
@@ -289,6 +295,9 @@
       </if>
       <if test="salaryCard != null">
         #{salaryCard,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryCardBank != null">
+        #{salaryCardBank,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -382,6 +391,9 @@
       <if test="record.salaryCard != null">
         salary_card = #{record.salaryCard,jdbcType=VARCHAR},
       </if>
+      <if test="record.salaryCardBank != null">
+        salary_card_bank = #{record.salaryCardBank,jdbcType=VARCHAR},
+      </if>
       <if test="record.gmtCreate != null">
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -430,6 +442,7 @@
       probation_salary = #{record.probationSalary,jdbcType=VARCHAR},
       salary = #{record.salary,jdbcType=VARCHAR},
       salary_card = #{record.salaryCard,jdbcType=VARCHAR},
+      salary_card_bank = #{record.salaryCardBank,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modify = #{record.gmtModify,jdbcType=TIMESTAMP},
       creator = #{record.creator,jdbcType=VARCHAR},
@@ -501,6 +514,9 @@
       <if test="salaryCard != null">
         salary_card = #{salaryCard,jdbcType=VARCHAR},
       </if>
+      <if test="salaryCardBank != null">
+        salary_card_bank = #{salaryCardBank,jdbcType=VARCHAR},
+      </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -546,6 +562,7 @@
       probation_salary = #{probationSalary,jdbcType=VARCHAR},
       salary = #{salary,jdbcType=VARCHAR},
       salary_card = #{salaryCard,jdbcType=VARCHAR},
+      salary_card_bank = #{salaryCardBank,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=VARCHAR},

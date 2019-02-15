@@ -43,6 +43,8 @@ public class StaffDO {
 
     private String salaryCard;
 
+    private String salaryCardBank;
+
     private Date gmtCreate;
 
     private Date gmtModify;
@@ -215,6 +217,14 @@ public class StaffDO {
 
     public void setSalaryCard(String salaryCard) {
         this.salaryCard = salaryCard == null ? null : salaryCard.trim();
+    }
+
+    public String getSalaryCardBank() {
+        return salaryCardBank;
+    }
+
+    public void setSalaryCardBank(String salaryCardBank) {
+        this.salaryCardBank = salaryCardBank == null ? null : salaryCardBank.trim();
     }
 
     public Date getGmtCreate() {

@@ -41,15 +41,16 @@ public class StaffTunnelTest {
         // hr
         assertThat(fetched.getFirstEmployDate()).isEqualTo(staffDO.getFirstEmployDate());
         assertThat(fetched.getPositiveDate()).isEqualTo(staffDO.getPositiveDate());
-        assertThat(fetched.getCostingOrganizationId()).isEqualTo(staffDO.getCostingOrganizationId());
         assertThat(fetched.getHrOrganizationId()).isEqualTo(staffDO.getHrOrganizationId());
         assertThat(fetched.getProbationSalary()).isEqualTo(staffDO.getProbationSalary());
         assertThat(fetched.getSalary()).isEqualTo(staffDO.getSalary());
         assertThat(fetched.getSalaryCard()).isEqualTo(staffDO.getSalaryCard());
+        assertThat(fetched.getSalaryCardBank()).isEqualTo(staffDO.getSalaryCardBank());
         assertThat(fetched.getWorkNo()).isEqualTo(staffDO.getWorkNo());
 
         // work
         assertThat(fetched.getPostId()).isEqualTo(staffDO.getPostId());
+        assertThat(fetched.getCostingOrganizationId()).isEqualTo(staffDO.getCostingOrganizationId());
 
         // system
         assertThat(fetched.getId()).isNotNull();

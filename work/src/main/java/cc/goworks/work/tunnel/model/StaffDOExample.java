@@ -1445,6 +1445,76 @@ public class StaffDOExample {
             return (Criteria) this;
         }
 
+        public Criteria andSalaryCardBankIsNull() {
+            addCriterion("salary_card_bank is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankIsNotNull() {
+            addCriterion("salary_card_bank is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankEqualTo(String value) {
+            addCriterion("salary_card_bank =", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankNotEqualTo(String value) {
+            addCriterion("salary_card_bank <>", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankGreaterThan(String value) {
+            addCriterion("salary_card_bank >", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankGreaterThanOrEqualTo(String value) {
+            addCriterion("salary_card_bank >=", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankLessThan(String value) {
+            addCriterion("salary_card_bank <", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankLessThanOrEqualTo(String value) {
+            addCriterion("salary_card_bank <=", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankLike(String value) {
+            addCriterion("salary_card_bank like", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankNotLike(String value) {
+            addCriterion("salary_card_bank not like", value, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankIn(List<String> values) {
+            addCriterion("salary_card_bank in", values, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankNotIn(List<String> values) {
+            addCriterion("salary_card_bank not in", values, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankBetween(String value1, String value2) {
+            addCriterion("salary_card_bank between", value1, value2, "salaryCardBank");
+            return (Criteria) this;
+        }
+
+        public Criteria andSalaryCardBankNotBetween(String value1, String value2) {
+            addCriterion("salary_card_bank not between", value1, value2, "salaryCardBank");
+            return (Criteria) this;
+        }
+
         public Criteria andGmtCreateIsNull() {
             addCriterion("gmt_create is null");
             return (Criteria) this;

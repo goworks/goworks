@@ -35,6 +35,7 @@ public class TestDataUtils {
         staffDO.setName("name");
         staffDO.setProbationSalary("800");
         staffDO.setSalary("1000");
+        staffDO.setSalaryCard("8888888888888888888888");
         staffDO.setSalaryCard("Hangzhou Branch Bank");
         return staffDO;
     }
