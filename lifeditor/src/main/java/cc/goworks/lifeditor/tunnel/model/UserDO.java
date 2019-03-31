@@ -13,6 +13,8 @@ public class UserDO {
 
     private String nickname;
 
+    private Date birthday;
+
     private Byte gender;
 
     private String mobile;
@@ -25,6 +27,8 @@ public class UserDO {
 
     private String dingtalk;
 
+    private Byte status;
+
     private Date gmtCreate;
 
     private Date gmtModify;
@@ -32,6 +36,12 @@ public class UserDO {
     private String creator;
 
     private String modifier;
+
+    private Byte active;
+
+    private Integer version;
+
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -71,6 +81,14 @@ public class UserDO {
 
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Byte getGender() {
@@ -121,6 +139,14 @@ public class UserDO {
         this.dingtalk = dingtalk == null ? null : dingtalk.trim();
     }
 
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -151,5 +177,29 @@ public class UserDO {
 
     public void setModifier(String modifier) {
         this.modifier = modifier == null ? null : modifier.trim();
+    }
+
+    public Byte getActive() {
+        return active;
+    }
+
+    public void setActive(Byte active) {
+        this.active = active;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 }

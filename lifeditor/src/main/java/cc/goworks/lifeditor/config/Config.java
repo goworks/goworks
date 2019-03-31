@@ -9,6 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan(value = "cc.goworks.work", sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(value = "cc.goworks.lifeditor", sqlSessionFactoryRef = "sqlSessionFactory")
 public class Config {
 }

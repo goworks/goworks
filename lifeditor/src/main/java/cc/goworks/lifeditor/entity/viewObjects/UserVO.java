@@ -3,7 +3,7 @@ package cc.goworks.lifeditor.entity.viewObjects;
 /**
  * Created by ge on 12/05/2018.
  */
-public class StaffVO {
+public class UserVO {
     private String id;
 
     private String personId;
@@ -14,7 +14,7 @@ public class StaffVO {
 
     private String email;
 
-    private String phone;
+    private String mobile;
 
     private Integer status;
 
@@ -60,12 +60,12 @@ public class StaffVO {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public Integer getStatus() {

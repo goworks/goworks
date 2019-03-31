@@ -4,62 +4,62 @@ import cc.goworks.lifeditor.common.ErrorCode;
 import cc.goworks.lifeditor.common.RequestException;
 import cc.goworks.lifeditor.enums.UserStatus;
 import cc.goworks.lifeditor.service.SecurityService;
-import cc.goworks.lifeditor.service.StaffService;
-import cc.goworks.lifeditor.tunnel.model.StaffDO;
-import cc.goworks.lifeditor.tunnel.tunnels.StaffTunnel;
+import cc.goworks.lifeditor.service.UserService;
+import cc.goworks.lifeditor.tunnel.model.UserDO;
+import cc.goworks.lifeditor.tunnel.tunnels.UserTunnel;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StaffServiceImpl implements StaffService {
-    private StaffTunnel staffTunnel;
+public class UserServiceImpl implements UserService {
+    private UserTunnel userTunnel;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private SecurityService securityService;
 
     @Autowired
-    public StaffServiceImpl(StaffTunnel tunnel,
+    public UserServiceImpl(UserTunnel tunnel,
                             BCryptPasswordEncoder passwordEncoder,
                             SecurityService securityService) {
-        staffTunnel = tunnel;
+        userTunnel = tunnel;
         bCryptPasswordEncoder = passwordEncoder;
         this.securityService = securityService;
     }
 
     @Override
-    public StaffDO getById(String staffId) {
-        return staffTunnel.get(staffId);
+    public UserDO getById(String staffId) {
+        return userTunnel.get(staffId);
     }
 
     @Override
-    public StaffDO getByUsername(String username) {
-        return staffTunnel.getByUsername(username);
+    public UserDO getByUsername(String username) {
+        return userTunnel.getByUsername(username);
     }
 
     @Override
-    public void createUser(StaffDO staffDO) {
+    public void createUser(UserDO staffDO) {
         staffDO.setPassword(bCryptPasswordEncoder.encode(staffDO.getPassword()));
         staffDO.setStatus(UserStatus.AVAILABLE.getValue());
 
-        staffTunnel.save(staffDO);
+        userTunnel.save(staffDO);
     }
 
     @Override
-    public void login(StaffDO staffDO) {
-        StaffDO fetchedStaffDO = this.getByUsername(staffDO.getUsername());
-        if (Objects.isNull(fetchedStaffDO)) {
+    public void login(UserDO staffDO) {
+        UserDO fetchedUserDO = this.getByUsername(staffDO.getUsername());
+        if (Objects.isNull(fetchedUserDO)) {
             throw new RequestException(ErrorCode.USER_NOT_EXIST);
         }
-        boolean matched = bCryptPasswordEncoder.matches(staffDO.getPassword(), fetchedStaffDO.getPassword());
+        boolean matched = bCryptPasswordEncoder.matches(staffDO.getPassword(), fetchedUserDO.getPassword());
         if (!matched) {
             throw new RequestException(ErrorCode.USER_PASSWORD_INCORRECT);
         }
-        securityService.autologin(staffDO.getUsername(), fetchedStaffDO.getPassword());
+        securityService.autologin(staffDO.getUsername(), fetchedUserDO.getPassword());
     }
 
     @Override
-    public StaffDO getUserByUsernameAndPassword(String username, String password) {
-        return staffTunnel.getUserByUsernameAndPassword(username, password);
+    public UserDO getUserByUsernameAndPassword(String username, String password) {
+        return userTunnel.getUserByUsernameAndPassword(username, password);
     }
 }

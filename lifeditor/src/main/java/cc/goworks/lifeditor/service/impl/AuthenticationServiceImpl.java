@@ -1,7 +1,7 @@
 package cc.goworks.lifeditor.service.impl;
 
-import cc.goworks.lifeditor.service.StaffService;
-import cc.goworks.lifeditor.tunnel.model.StaffDO;
+import cc.goworks.lifeditor.service.UserService;
+import cc.goworks.lifeditor.tunnel.model.UserDO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,11 +20,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AuthenticationServiceImpl implements AuthenticationProvider {
-    private StaffService staffService;
+    private UserService userService;
 
     @Autowired
-    public AuthenticationServiceImpl(StaffService staffService) {
-        this.staffService = staffService;
+    public AuthenticationServiceImpl(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
@@ -36,15 +36,15 @@ public class AuthenticationServiceImpl implements AuthenticationProvider {
         }
         String password = credentials.toString();
 
-        StaffDO staffDO = staffService.getUserByUsernameAndPassword(username, password);
+        UserDO userDO = userService.getUserByUsernameAndPassword(username, password);
 
-        if (Objects.isNull(staffDO)) {
+        if (Objects.isNull(userDO)) {
             throw new BadCredentialsException("Authentication failed for " + username);
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE"));
-        Authentication auth = new UsernamePasswordAuthenticationToken(staffDO, password, grantedAuthorities);
+        Authentication auth = new UsernamePasswordAuthenticationToken(userDO, password, grantedAuthorities);
         return auth;
     }
 
