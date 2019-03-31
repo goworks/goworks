@@ -14,7 +14,7 @@ import org.springframework.util.CollectionUtils;
 import static cc.goworks.lifeditor.enums.Active.ACTIVE;
 
 @Repository
-public class UserTunnel {
+public class UserTunnel implements Tunnel<UserDO> {
     private UserDOMapper userDOMapper;
 
     @Autowired
@@ -22,6 +22,7 @@ public class UserTunnel {
         userDOMapper = mapper;
     }
 
+    @Override
     public UserDO get(String id) {
         Assert.notNull(id, "user id cannot be null");
         UserDOExample example = new UserDOExample();
@@ -35,6 +36,7 @@ public class UserTunnel {
         return userDOS.get(0);
     }
 
+    @Override
     public void save(UserDO userDO) {
         Assert.notNull(userDO, "userDO cannot be null");
         String userId = userDO.getLogicId();
