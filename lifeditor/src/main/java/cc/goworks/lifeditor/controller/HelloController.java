@@ -24,7 +24,7 @@ public class HelloController {
         return session.getId();
     }
 
-    public class UserProfile {
+    public static class UserProfile {
         private String username;
         private String email;
 

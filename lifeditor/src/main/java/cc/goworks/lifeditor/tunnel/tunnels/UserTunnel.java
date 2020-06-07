@@ -18,8 +18,8 @@ public class UserTunnel implements Tunnel<UserDO> {
     private UserDOMapper userDOMapper;
 
     @Autowired
-    public UserTunnel(UserDOMapper mapper) {
-        userDOMapper = mapper;
+    public UserTunnel(UserDOMapper userDOMapper) {
+        this.userDOMapper = userDOMapper;
     }
 
     @Override

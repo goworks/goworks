@@ -20,12 +20,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AuthenticationServiceImpl implements AuthenticationProvider {
-    private UserService userService;
-
     @Autowired
-    public AuthenticationServiceImpl(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
